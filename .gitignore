@@ -1,0 +1,37 @@
+# Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Tomcat runtime (do not commit logs / work / temp)
+apache-tomcat-*/
+!apache-tomcat-*/conf/
+!apache-tomcat-*/webapps/
+
+# If you want to exclude the entire Tomcat distribution, keep the line above and remove the negations.
+# As a safer default for a code repo, we ignore most Tomcat runtime bits.
+apache-tomcat-9.0.83/logs/
+apache-tomcat-9.0.83/work/
+apache-tomcat-9.0.83/temp/
+apache-tomcat-*/webapps/ROOT/
+
+# Zips
+*.zip
+
+# OS/editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.iml
+
+# Secrets / config overrides (if any)
+application-*.properties
+
+# Local generated blockchain/qr output (optional)
+# Uncomment if you want to keep repo clean of generated runtime data
+# Blocks/
+# QrCode/
+

@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: medical_scm_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: medicine_scm
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./med.sql:/docker-entrypoint-initdb.d/med.sql
+
+  app:
+    image: tomcat:9.0-jdk8
+    container_name: medical_scm_app
+    ports:
+      - "8090:8080"
+    environment:
+      - CATALINA_OPTS=-Ddb.host=db
+    volumes:
+      - ./src/main/webapp:/usr/local/tomcat/webapps/Medical_SCM
+      - ./Blocks:/usr/local/tomcat/Blocks
+    depends_on:
+      - db
